@@ -1,0 +1,24 @@
+---
+driver:
+  name: docker
+
+ansible:
+  inventory_file: inventory/
+  requirements_file: requirements.yml
+
+docker:
+  containers:
+      - name: ansible-playbook-chef-centos6
+        image: centos
+        privileged: True
+        volume_mounts:
+          - '/var/run/docker.sock:/var/run/docker.sock'
+          - 'assets:/tmp/assets'
+        image_version: 6
+      - name: ansible-playbook-chef-centos7
+        image: centos
+        privileged: True
+        volume_mounts:
+          - '/var/run/docker.sock:/var/run/docker.sock'
+          - 'assets:/tmp/assets'
+        image_version: 7

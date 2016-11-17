@@ -1,0 +1,6 @@
+ansible>=2.2
+pytest>=3.0
+paver>=1.2
+ansible-lint>=3.4
+molecule>=1.13
+docker-py>=1.10

@@ -1,0 +1,5 @@
+[centos6]
+ansible-playbook-chef-centos6 ansible_connection=docker
+
+[centos7]
+ansible-playbook-chef-centos7 ansible_connection=docker

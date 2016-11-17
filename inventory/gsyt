@@ -1,0 +1,2 @@
+[gsyt]
+localhost ansible_connection=ssh
