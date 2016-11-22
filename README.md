@@ -15,15 +15,18 @@ This is a very strange use case for chef client, it was devised to meet the foll
 All python runtime and testing dependencies are listed in requirements.txt. Install with `pip install --upgrade -r requirements.txt`
 
 ## Extending
-* To add chef cookbook 'cb01' to the repo, append fragment `cookbook 'cb01'` to the repo's [Berkshelf file](/assets/chef-repo/Berksfile)
-* To add chef role 'x' to the repo, create a chef role file in the repo's [role directory](/assets/chef-repo/roles) such as the following:
+* To add chef cookbook `cb01` to the repo, append fragment `cookbook 'cb01'` to the repo's [Berkshelf file](/assets/chef-repo/Berksfile)
+* To add chef role `x` to the repo, create a chef role file in the repo's [role directory](/assets/chef-repo/roles) such as the following:
+
     ```
     name 'x'
     description 'configuration for clsuterx nodes'
     run_list "recipe[cb01]"
     ```
-* To add an additional server cluster with name 'clusterx', role 'x' and members 'server-x01' and 'server-x02':
+
+* To add an additional server cluster with name `clusterx`, role `x` and members `server-x01` and `server-x02`:
     * Add file clusterx to the [inventory](/inventory) with the following contents:
+
     ```
     [clusterx]
     server-x01
@@ -32,8 +35,10 @@ All python runtime and testing dependencies are listed in requirements.txt. Inst
     [clusterx:vars]
     role=x
     ```
+
     * Add entry `clusterx` to the `[chef:children]` section of the [chef inventory file](/inventory/chef) :
     * Add file clusterx to the [test inventory](/test/inventory) with the following contents:
+
     ```
     [clusterx]
     
@@ -42,6 +47,7 @@ All python runtime and testing dependencies are listed in requirements.txt. Inst
     [clusterx:vars]
     role=x
     ```
+
     * Add entry `clusterx` to the `[chef:children]` section of the [molecule test inventory file](/test/inventory/molecule)
 
 
@@ -49,7 +55,7 @@ All python runtime and testing dependencies are listed in requirements.txt. Inst
 Run `paver test` to perform a test. You will need docker running on your test machine.
 
 ## Running
-Run `paver chef` to perform a live run and 
+Run `paver chef` to perform a live run
 
 ## To Do
 * Extend playbook with [bastion hosts](http://blog.scottlowe.org/2015/12/24/running-ansible-through-ssh-bastion-host/) for each environment
