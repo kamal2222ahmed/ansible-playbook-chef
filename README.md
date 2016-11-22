@@ -1,6 +1,12 @@
 # ansible-playbook-chef
 An ansible playbook POC to perform [chef-client](https://docs.chef.io/ctl_chef_client.html#run-in-local-mode) in clusters of servers.
 
+Playbook chef-playbook.yml uses Ansible to perform the following actions on devices added to the `chef` group defined on the inventory:
+* [Install Chef DK](https://docs.chef.io/install_dk.html)
+* Push a copy of the [Chef repo](/assets/chef-repo) to the target node
+* Pull [Berkshelf](http://berkshelf.com) dependencies into the target node
+* Converge the node using [Chef Zero](https://github.com/chef/chef-zero) to the role defined in the inventory for the node
+
 ## Rationale
 This is a very strange use case for chef client, it was devised to meet the following requirements:
 * Chef converge on multiple copies of the same cluster:
@@ -58,7 +64,7 @@ Run `paver test` to perform a test. You will need docker running on your test ma
 Run `paver chef` to perform a live run
 
 ## To Do
+* Extend playbook with [http_proxy](http://docs.ansible.com/ansible/playbooks_environment.html) support for chef_client runs
 * Extend playbook with [bastion hosts](http://blog.scottlowe.org/2015/12/24/running-ansible-through-ssh-bastion-host/) for each environment
 * Look into splitting the [chef repo](/assets/chef-repo) into a separate repository and leverage branches for differentiated configuration of different environments
 * Look into splitting this repo into separate branches for differentiated configuration of different environments
-* Build CI configuration POC

@@ -34,7 +34,7 @@
         chdir: "{{ chef_repo }}"
     - name: Run chef client
       changed_when: False
-      command: chef-client -z -o ntp
+      command: "chef-client -z -o {{ chef_role }}"
       args:
         chdir: "{{ chef_repo }}"
       become: yes

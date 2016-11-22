@@ -1,0 +1,11 @@
+language: python
+
+sudo: required
+
+services: docker
+
+install:
+    - pip install -r requirements.yml
+
+script:
+    - paver test

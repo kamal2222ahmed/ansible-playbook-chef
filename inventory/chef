@@ -1,2 +1,5 @@
 [chef:children]
 local
+
+[chef:vars]
+chef_role=role[default]
