@@ -22,7 +22,7 @@ All python runtime and testing dependencies are listed in requirements.txt. Inst
 
 ## Extending
 * To add chef cookbook `cb01` to the repo, append fragment `cookbook 'cb01'` to the repo's [Berkshelf file](/assets/chef-repo/Berksfile)
-* To add chef role `x` to the repo, create a chef role file in the repo's [role directory](/assets/chef-repo/roles) such as the following:
+* To add chef role `x` to the repo, create chef role file `x.rb` in the repo's [role directory](/assets/chef-repo/roles) such as the following:
 
     ```
     name 'x'
@@ -31,7 +31,7 @@ All python runtime and testing dependencies are listed in requirements.txt. Inst
     ```
 
 * To add an additional server cluster with name `clusterx`, role `x` and members `server-x01` and `server-x02`:
-    * Add file clusterx to the [inventory](/inventory) with the following contents:
+    * Add file `clusterx` to the [inventory](/inventory) with the following contents:
 
     ```
     [clusterx]
