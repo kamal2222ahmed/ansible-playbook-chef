@@ -10,8 +10,7 @@ test_exe_dir = '.test'
 test_files = [os.path.join(test_src_dir, 'inventory'),
               os.path.join(test_src_dir, 'molecule.yml'),
               'assets',
-              'requirements.yml'
-              ]
+              'docker']
 molecule_playbook = 'playbook.yml'
 playbook_dir = '.'
 playbook_ignore = []
@@ -49,13 +48,18 @@ def bootstrap_test_tree(playbook):
     """
     test_dir = playbook_test_dir(playbook)
     shutil.rmtree(test_dir, True)
-    os.mkdir(test_dir)
+    os.makedirs(test_dir)
     for target in test_files:
         os.symlink(os.path.join('../..', target),
                    os.path.join(test_dir, os.path.basename(target)))
     os.symlink(os.path.join('../..', playbook),
                os.path.join(test_dir, molecule_playbook))
     return(test_dir)
+
+
+def test_bootstrap():
+    for playbook in list_playbooks(playbook_dir):
+        bootstrap_test_tree(playbook)
 
 
 @pytest.mark.parametrize("playbook", list_playbooks(playbook_dir))
@@ -92,8 +96,8 @@ def test_lint():
     [test_lint_playbook(x) for x in list_playbooks(playbook_dir)]
 
 
-def test_chef_zero_playbook():
-    """Perform lint and run tests on chef_zero playbook"""
-    playbook = 'chef_zero-playbook.yml'
+def test_chef_playbook():
+    """Perform lint and run tests on chef playbook"""
+    playbook = 'chef-playbook.yml'
     test_lint_playbook(playbook)
     test_run_playbook(playbook)

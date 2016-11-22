@@ -3,3 +3,7 @@ ansible-playbook-chef-centos6 ansible_connection=docker
 
 [centos7]
 ansible-playbook-chef-centos7 ansible_connection=docker
+
+[chef:children]
+centos6
+centos7

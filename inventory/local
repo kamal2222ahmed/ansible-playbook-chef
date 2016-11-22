@@ -1,2 +1,2 @@
-[gsyt]
+[local]
 localhost ansible_connection=ssh

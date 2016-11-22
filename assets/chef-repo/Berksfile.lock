@@ -1,0 +1,5 @@
+DEPENDENCIES
+  ntp (~> 3.2.0)
+
+GRAPH
+  ntp (3.2.0)
