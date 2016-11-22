@@ -8,7 +8,7 @@ Playbook chef-playbook.yml uses Ansible to perform the following actions on devi
 * Converge the node using [Chef Zero](https://github.com/chef/chef-zero) to the role defined in the inventory for the node
 
 ## Rationale
-This is a very strange use case for chef client, it was devised to meet the following requirements:
+This is an unusual use case for chef client, it was devised to meet the following requirements:
 * Chef converge on multiple copies of the same cluster:
     * All cluster instances have the same chef certificates
     * All cluster instances share the same ips (i.e. each member server has the same ip in each cluster)
