@@ -1,4 +1,5 @@
 # ansible-playbook-chef
+[![Build Status](https://travis-ci.org/nephelaiio/ansible-playbook-chef.svg?branch=master)](https://travis-ci.org/nephelaiio/ansible-playbook-chef)
 An ansible playbook POC to perform [chef-client](https://docs.chef.io/ctl_chef_client.html#run-in-local-mode) in clusters of servers.
 
 Playbook chef-playbook.yml uses Ansible to perform the following actions on devices added to the `chef` group defined on the inventory:
