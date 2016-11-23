@@ -28,15 +28,15 @@
                 }
             }
         },
-        "yum": {
-            "epel": {
-                "enabled": false
-            }
-        },
         "yum-epel": {
             "repositories": [
                 "epel"
             ]
+        },
+        "yum": {
+            "epel": {
+                "enabled": true
+            }
         },
         "yum-centos": {
             "extras": {
@@ -102,7 +102,13 @@
                     "UsePAM": "yes"
                 }
 			}
-		}
+		},
+        "nrpe": {
+            "install_yum_epel": false,
+            "dont_blame_nrpe": true,
+            "command_timeout": 60,
+            "allowed_hosts": [ "127.0.1.1/32" ]
+        }
     },
     "run_list": [
         "recipe[ntp]",
@@ -110,6 +116,8 @@
         "recipe[sudo]",
         "recipe[yum-epel]",
         "recipe[yum-centos]",
-        "recipe[openssh]"
+        "recipe[openssh]",
+        "recipe[nrpe]",
+		"recipe[custom::nrpe]"
     ]
 }
