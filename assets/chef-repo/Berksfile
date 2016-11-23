@@ -1,3 +1,8 @@
 source 'https://supermarket.chef.io'
 
 cookbook 'ntp', '~> 3.2.0'
+cookbook 'snmp', '~> 4.0.0'
+cookbook 'yum-epel', '~> 1.0.1'
+cookbook 'yum-centos', '~> 1.0.0'
+cookbook 'sudo', '~> 3.1.0'
+cookbook 'openssh', '~> 2.1.0'
