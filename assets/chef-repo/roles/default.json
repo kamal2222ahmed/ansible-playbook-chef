@@ -119,8 +119,19 @@
                 }
             ]
         },
-        "users": [ "test" ]
+        "users": [ "test" ],
+        "motd": {
+            "banner": [
+                "Access to this system is restricted\n",
+                "Disconnect now if you have not been expressly authorized to use this system",
+                "Unauthorized use is an offence that results in disciplinary action according",
+                "to Access and Acceptable Use Policies\n",
+                "Communications on or through this computer system may be monitored or ",
+                "recorded to secure effective system operation and for other lawful purposes\n"
+            ]
+        }
     },
+
     "run_list": [
         "recipe[ntp::default]",
         "recipe[snmp::default]",
@@ -130,6 +141,7 @@
         "recipe[openssh::default]",
         "recipe[user::data_bag]",
 		"recipe[custom::nrpe]",
-		"recipe[custom::autofs]"
+		"recipe[custom::autofs]",
+		"recipe[custom::motd]"
     ]
 }
