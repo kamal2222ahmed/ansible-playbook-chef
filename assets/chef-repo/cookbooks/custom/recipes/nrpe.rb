@@ -1,3 +1,5 @@
+include_recipe 'nrpe'
+
 nrpe_check "check_tcp" do
 	command "#{node['nrpe']['plugin_dir']}/check_tcp -H $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$ $ARG5$"
     action  :add

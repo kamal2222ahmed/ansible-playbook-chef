@@ -1,3 +1,5 @@
-name             'custom'
-description      'Custom configuration settings'
-version          '0.1.0'
+name            'custom'
+description     'local configuration recipes'
+depends         'nrpe'
+depends         'autofs'
+depends         'nfs'

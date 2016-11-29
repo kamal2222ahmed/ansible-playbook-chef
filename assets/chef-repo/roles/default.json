@@ -3,7 +3,7 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "description": "base configuration for all nodes",
-    "default_attrubutes": {
+    "default_attributes": {
         "ntp": {
             "servers": [ 
                 "0.pool.ntp.org", 
@@ -108,16 +108,28 @@
             "dont_blame_nrpe": true,
             "command_timeout": 60,
             "allowed_hosts": [ "127.0.1.1/32" ]
-        }
+        },
+        "autofs": {
+            "config_file": "/etc/auto.master",
+            "mountpoints": [
+                {
+                    "path": "/auto/example",
+                    "options": "defaults",
+                    "target": "nfs:/vol/example"
+                }
+            ]
+        },
+        "users": [ "test" ]
     },
     "run_list": [
-        "recipe[ntp]",
-        "recipe[snmp]",
-        "recipe[sudo]",
-        "recipe[yum-epel]",
-        "recipe[yum-centos]",
-        "recipe[openssh]",
-        "recipe[nrpe]",
-		"recipe[custom::nrpe]"
+        "recipe[ntp::default]",
+        "recipe[snmp::default]",
+        "recipe[sudo::default]",
+        "recipe[yum-epel::default]",
+        "recipe[yum-centos::default]",
+        "recipe[openssh::default]",
+        "recipe[user::data_bag]",
+		"recipe[custom::nrpe]",
+		"recipe[custom::autofs]"
     ]
 }
