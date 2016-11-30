@@ -119,7 +119,8 @@
                 }
             ]
         },
-        "users": [ "test" ],
+        "users": [ "molecule" ],
+        "groups": [ "molecule" ],
         "motd": {
             "banner": [
                 "Access to this system is restricted\n",
@@ -129,9 +130,13 @@
                 "Communications on or through this computer system may be monitored or ",
                 "recorded to secure effective system operation and for other lawful purposes\n"
             ]
+        },
+        "postfix": {
+            "main": {
+                "relayhost": "mx.local"
+            }
         }
     },
-
     "run_list": [
         "recipe[ntp::default]",
         "recipe[snmp::default]",
@@ -140,8 +145,10 @@
         "recipe[yum-centos::default]",
         "recipe[openssh::default]",
         "recipe[user::data_bag]",
+        "recipe[group::data_bag]",
 		"recipe[custom::nrpe]",
 		"recipe[custom::autofs]",
-		"recipe[custom::motd]"
+		"recipe[custom::motd]",
+		"recipe[postfix::default]"
     ]
 }

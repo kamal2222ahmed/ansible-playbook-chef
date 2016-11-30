@@ -1,0 +1,14 @@
+{
+    "name": "load",
+    "json_class": "Chef::Environment",
+    "chef_type": "environment",
+    "description": "load configuration overrides",
+    "override_attributes": {
+        "postfix": {
+            "use_transport_maps": true,
+            "transports": {
+                "*": "discard:"
+            }
+        }
+    }
+}
