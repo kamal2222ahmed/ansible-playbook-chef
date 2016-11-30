@@ -135,6 +135,14 @@
             "main": {
                 "relayhost": "mx.local"
             }
+        },
+        "limits": {
+            "*": [
+                { "type": "soft", "item": "nofile", "value": "16384" },
+                { "type": "hard", "item": "nofile", "value": "16384" },
+                { "type": "soft", "item": "nproc", "value": "65536" },
+                { "type": "hard", "item": "nproc", "value": "65536" }
+            ]
         }
     },
     "run_list": [
@@ -149,6 +157,8 @@
 		"recipe[custom::nrpe]",
 		"recipe[custom::autofs]",
 		"recipe[custom::motd]",
-		"recipe[postfix::default]"
+		"recipe[custom::limits]",
+		"recipe[postfix::default]",
+		"recipe[logrotate::default]"
     ]
 }
