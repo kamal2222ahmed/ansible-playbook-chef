@@ -4,9 +4,6 @@ ansible-playbook-chef-centos6 ansible_connection=docker
 [centos7]
 ansible-playbook-chef-centos7 ansible_connection=docker
 
-[chef:children]
+[chef_zero:children]
 centos6
 centos7
-
-[chef:vars]
-chef_role=role[default]

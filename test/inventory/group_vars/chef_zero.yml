@@ -1,0 +1,2 @@
+chef_zero_role: 'role[default]'
+chef_zero_environment: '_default'

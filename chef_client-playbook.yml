@@ -1,0 +1,15 @@
+---
+- name: converge nodes to externally defined chef server
+  hosts: chef_client
+  vars:
+    chef_state: present
+  tasks:
+    - name: Install Chef
+      yum:
+        name: "chef"
+        state: "{{ chef_state }}"
+      become: yes
+    - name: Run chef client
+      changed_when: False
+      command: "chef-client -o {{ chef_server_role }}"
+      become: yes

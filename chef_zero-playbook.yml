@@ -1,7 +1,8 @@
 ---
-- hosts: chef
+- name: converge nodes against local chef-repo assets
+  hosts: chef_zero
   vars:
-    package_state: latest
+    chef_dk_state: present
     chef_dk_src: "https://packages.chef.io/stable/el/{{ ansible_distribution_major_version }}/chefdk-{{ chef_dk_version }}.el{{ ansible_distribution_major_version }}.{{ ansible_machine }}.rpm"
     chef_channel: stable
     chef_repo_src: assets/chef-repo
@@ -17,24 +18,28 @@
         baseurl: "https://packages.chef.io/repos/yum/{{ chef_channel }}/el/{{ ansible_distribution_major_version }}/{{ ansible_machine }}"
         gpgcheck: yes
         enabled: yes
+      become: yes
     - name: Install Chef DK
       yum:
         name: "chefdk"
-        state: present
+        state: "{{ chef_dk_state }}"
+      become: yes
     - name: Pull Chef Repo
       changed_when: False
       copy:
         src: "{{ chef_repo_src }}"
         dest: "{{ chef_repo_parent }}"
         force: yes
+      become: yes
     - name: Pull Supermarket dependencies
       changed_when: False
       command: berks vendor -d cookbooks
       args:
         chdir: "{{ chef_repo }}"
+      become: yes
     - name: Run chef client
       changed_when: False
-      command: "chef-client -z -o {{ chef_role }}"
+      command: "chef-client -z -o {{ chef_zero_role }} -E {{ chef_zero_environment }}"
       args:
         chdir: "{{ chef_repo }}"
       become: yes

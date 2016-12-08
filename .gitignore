@@ -4,3 +4,5 @@
 .molecule
 .ropeproject
 .cache
+test-playbook.yml
+**/*.retry

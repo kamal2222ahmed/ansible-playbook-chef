@@ -1,0 +1,2 @@
+chef_zero_role: 'role[default]'
+chef_server_role: 'recipe[yum-epel::default]'

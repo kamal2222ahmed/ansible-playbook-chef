@@ -96,8 +96,8 @@ def test_lint():
     [test_lint_playbook(x) for x in list_playbooks(playbook_dir)]
 
 
-def test_chef_playbook():
+def test_chef_zero_playbook():
     """Perform lint and run tests on chef playbook"""
-    playbook = 'chef-playbook.yml'
+    playbook = 'chef_zero-playbook.yml'
     test_lint_playbook(playbook)
     test_run_playbook(playbook)

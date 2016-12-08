@@ -1,4 +1,4 @@
-from paver.tasks import task,no_help
+from paver.tasks import task, no_help
 from subprocess import call
 import pytest
 
@@ -18,16 +18,22 @@ def test_bootstrap(options):
 
 
 @task
-def chef(options):
-    """Run chef playbook"""
-    run_playbook('chef-playbook.yml')
+def chef_zero_alpha(options):
+    """Run chef zero playbook"""
+    run_playbook('chef_zero-playbook.yml', '-i inventory/alpha')
+
+
+@task
+def chef_client_alpha(options):
+    """Run chef zero playbook"""
+    run_playbook('chef_client-playbook.yml', '-i inventory/alpha')
 
 
 @task
 @no_help
 def test_chef_zero():
     """Test chef playbook"""
-    args = 'test/test_playbooks.py::test_chef_playbook -s'.split()
+    args = 'test/test_playbooks.py::test_chef_zero_playbook -s'.split()
     pytest.main(args)
 
 

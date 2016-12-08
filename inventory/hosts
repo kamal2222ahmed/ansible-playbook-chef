@@ -1,0 +1,11 @@
+[app1]
+alpha-app1-01
+
+[alpha:children]
+app1
+
+[chef_zero:children]
+alpha
+
+[chef_client:children]
+alpha
