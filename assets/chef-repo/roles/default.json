@@ -36,6 +36,7 @@
         "yum": {
             "epel": {
                 "enabled": true
+                "gpgcheck": false
             }
         },
         "yum-centos": {
